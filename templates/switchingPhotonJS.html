@@ -1,0 +1,38 @@
+<ion-view title="Switching Photon via JS" id="page1">
+    <ion-content overflow-scroll="true" padding="true" class="has-header">
+        <div class="button-bar">
+            <button ng-click="clickOff()" id="switchingPhoton-button3" style="color:#FFFFFF;" class="button button-dark  button-block icon-left ion-ios-lightbulb-outline">off</button>
+<!--
+            <button ng-click="clickSensorLight()" id="switchingPhoton-button1" style="color:#FFFFFF;" class="button button-energized  button-block icon-middle ion-ios-pulse"> brightness</button>
+            <button ng-click="clickSensorTemp()" id="switchingPhoton-button2" style="color:#FFFFFF;" class="button button-energized  button-block icon-middle ion-ios-pulse"> temperature</button>
+-->
+            <button ng-click="clickSensor()" id="switchingPhoton-button1" style="color:#FFFFFF;" class="button button-energized  button-block icon-middle ion-ios-pulse"> temperature / brightness</button>
+            <button ng-click="clickOn()" id="switchingPhoton-button5" style="color:#FFFFFF;" class="button button-positive  button-block icon-right ion-ios-lightbulb">on</button>
+            
+        </div>
+        <!-- <div ng-controller="srcImage" style="text-align:center;"> -->
+        <!-- <div ng-show="ledGet()" style="text-align:center;"> -->
+        <div style="text-align:center;">    
+            <!-- <img ng-src={{source}} width="auto" height="auto"/> -->
+            <!-- img src={{source}} width="auto" height="auto"/> -->
+            Letztes Lichtsensordatum: {{dataObject.light}}<br>
+            Letztes Temperatursensordatum: {{dataObject.temp}}<br><br>
+
+        </div>
+
+        <div ng-controller="graphController"> 
+            <canvas id="line" class="chart chart-line" chart-data="dataObject.data"
+            chart-labels="dataObject.labels" chart-series="dataObject.series" chart-options="options"
+            chart-dataset-override="dataObject.datasetOverride" chart-click="onClickChart">
+            </canvas> 
+        </div>
+
+        <div>
+            <label  class="item item-input " id="settings-input3" name="token">
+                <span class="input-label">Access-Token</span>
+                <input ng-model="dataVars.token" type="text" placeholder="63feb3bd81a9c37b5b5a15b12feaaa2cb13cb5fb">
+            </label>
+            <!-- <button ng-click="saveData()" class="button button-block button-positive">Save</button> -->
+        </div>
+    </ion-content>
+</ion-view>
